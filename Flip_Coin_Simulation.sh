@@ -25,4 +25,26 @@ then
          echo "Tail wins by $win"
 else
 	echo "It's a tie..."
+	if [ $head -eq $tail ]
+	then
+		while true
+		do
+			res=$((RANDOM%2))
+			if(($res==1))
+			then
+				head=$(($head+1))
+			else
+				tail=$(($tail+1))
+			fi
+			if [ $(($head-$tail)) -eq 2 ]
+			then
+				echo "Head wins by 2 and count is:"$head
+			else
+				if [ $(($tail-$head)) -eq 2 ]
+				then
+					echo "Tail wins by 2 and count is:"$tail
+				fi
+			fi
+		done
+	fi
 fi
