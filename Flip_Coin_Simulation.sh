@@ -2,18 +2,24 @@
 
 head=0
 tail=0
-r=$((RANDOM%2))
-if(($r == 1))
-then
-	head=$(($head+1))
-else
-	tail=$(($tail+1))
-fi
+while [ $head -ne 21 ] && [ $tail -ne 21 ]
+do
+	r=$((RANDOM%2))
+	if(($r == 1))
+	then
+		head=$(($head+1))
+	else
+		tail=$(($tail+1))
+	fi
+done
 echo "Heads:"$head
 echo "Tails:"$tail
-if(($head > $tail))
+
+if [ $head -gt $tail ]
 then
-	echo "Head wins"
+        win=$(($head-$tail))
+        echo "Head wins by $win"
 else
-	echo "Tail wins"
+         win=$(($tail-$head))
+         echo "Tail wins by $win"
 fi
