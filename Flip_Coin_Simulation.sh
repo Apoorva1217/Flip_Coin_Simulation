@@ -19,7 +19,10 @@ if [ $head -gt $tail ]
 then
         win=$(($head-$tail))
         echo "Head wins by $win"
-else
+elif [ $tail -gt $head ]
+then
          win=$(($tail-$head))
          echo "Tail wins by $win"
+else
+	echo "It's a tie..."
 fi
